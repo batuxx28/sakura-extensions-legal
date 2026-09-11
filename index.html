@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COQL Editor Documentation</title>
+
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --text: #162033;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --accent: #1677ff;
+      --accent-soft: #eef5ff;
+      --code: #101828;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f1b33, #17335d);
+      color: white;
+      padding: 56px 0;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      width: fit-content;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.12);
+      font-size: 13px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.05;
+    }
+
+    header p {
+      max-width: 760px;
+      color: #d9e3f2;
+      font-size: 18px;
+      margin: 0;
+    }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    nav .container {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      padding: 14px 0;
+    }
+
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    main {
+      padding: 40px 0 64px;
+    }
+
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 26px;
+    }
+
+    h3 {
+      margin-top: 26px;
+    }
+
+    p,
+    li {
+      color: #344054;
+    }
+
+    ul {
+      padding-left: 22px;
+    }
+
+    code {
+      font-family: "SFMono-Regular", Consolas, monospace;
+    }
+
+    pre {
+      background: var(--code);
+      color: #f8fafc;
+      padding: 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+      background: #fbfcfe;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .note {
+      background: var(--accent-soft);
+      border-left: 4px solid var(--accent);
+      padding: 14px 16px;
+      border-radius: 8px;
+      color: #244a7c;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 30px 0 50px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    a {
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container hero">
+      <span class="badge">by Sakura Extensions</span>
+      <h1>COQL Editor</h1>
+      <p>
+        A smart COQL workspace for Zoho CRM. Write, explore, run and export
+        COQL queries without leaving your CRM.
+      </p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <a href="#overview">Overview</a>
+      <a href="#getting-started">Getting Started</a>
+      <a href="#features">Features</a>
+      <a href="#examples">Examples</a>
+      <a href="#limits">Limits</a>
+      <a href="#faq">FAQ</a>
+      <a href="#support">Support</a>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <section id="overview">
+      <h2>Overview</h2>
+
+      <p>
+        COQL Editor is a developer-friendly query workspace built directly
+        inside Zoho CRM.
+      </p>
+
+      <p>
+        It helps administrators, developers, consultants and power users
+        create and execute COQL queries faster using intelligent suggestions
+        based on the modules and fields available in their own CRM.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <strong>Smart IntelliSense</strong>
+          Modules, fields, related fields and COQL keywords.
+        </div>
+
+        <div class="feature">
+          <strong>Picklist suggestions</strong>
+          Use real Zoho CRM picklist values while writing filters.
+        </div>
+
+        <div class="feature">
+          <strong>Date support</strong>
+          Insert Date and DateTime values using Zoho-compatible formats.
+        </div>
+
+        <div class="feature">
+          <strong>Live results</strong>
+          Preview query results in table or JSON format.
+        </div>
+
+        <div class="feature">
+          <strong>CSV export</strong>
+          Export query results directly from the extension.
+        </div>
+
+        <div class="feature">
+          <strong>Related fields</strong>
+          Navigate lookup relationships using dot notation.
+        </div>
+      </div>
+    </section>
+
+    <section id="getting-started">
+      <h2>Getting Started</h2>
+
+      <h3>1. Open COQL Editor</h3>
+      <p>
+        After installing the extension, open the
+        <strong>COQL Editor</strong> web tab inside Zoho CRM.
+      </p>
+
+      <h3>2. Write a query</h3>
+
+      <pre><code>SELECT id, Deal_Name, Stage
+FROM Deals
+WHERE Stage = 'Closed Won'
+LIMIT 200</code></pre>
+
+      <h3>3. Run the query</h3>
+      <p>
+        Click <strong>Run</strong> or use
+        <strong>Ctrl/Cmd + Enter</strong>.
+      </p>
+
+      <h3>4. View the results</h3>
+      <p>
+        Results can be displayed as a table or JSON.
+      </p>
+    </section>
+
+    <section id="features">
+      <h2>Features</h2>
+
+      <h3>IntelliSense</h3>
+      <p>
+        Press <strong>Ctrl/Cmd + Space</strong> to open suggestions manually.
+        Suggestions also appear automatically while typing.
+      </p>
+
+      <pre><code>SELECT Deal_Name, Account_Name.
+</code></pre>
+
+      <p>
+        When a field is a lookup, COQL Editor can load fields from the related
+        module and suggest values such as:
+      </p>
+
+      <pre><code>Account_Name.Account_Name
+Account_Name.Owner
+Account_Name.Industry</code></pre>
+
+      <h3>Picklist values</h3>
+
+      <pre><code>WHERE Stage = 'Closed Won'</code></pre>
+
+      <p>
+        For picklist fields, COQL Editor shows the actual values configured in
+        your Zoho CRM organization.
+      </p>
+
+      <p>
+        Picklist suggestions also work with:
+      </p>
+
+      <pre><code>WHERE Stage IN ('Closed Won', 'Qualification')</code></pre>
+
+      <h3>Date and DateTime</h3>
+
+      <p>
+        Date fields use the Zoho-compatible format:
+      </p>
+
+      <pre><code>'2026-09-11'</code></pre>
+
+      <p>
+        DateTime fields use an ISO-style format with timezone:
+      </p>
+
+      <pre><code>'2026-09-11T10:30:00-05:00'</code></pre>
+
+      <h3>Formatting</h3>
+      <p>
+        Use the <strong>Format</strong> button to improve readability of your
+        COQL query.
+      </p>
+
+      <h3>Copy as one line</h3>
+      <p>
+        The <strong>Copy 1 line</strong> button converts the query into a
+        single-line format for use in scripts, API tools or functions.
+      </p>
+    </section>
+
+    <section id="examples">
+      <h2>Examples</h2>
+
+      <h3>Basic query</h3>
+
+      <pre><code>SELECT id, Full_Name
+FROM Contacts
+LIMIT 200</code></pre>
+
+      <h3>Filter by picklist</h3>
+
+      <pre><code>SELECT Deal_Name, Stage
+FROM Deals
+WHERE Stage IN ('Closed Won', 'Qualification')
+LIMIT 200</code></pre>
+
+      <h3>Related module field</h3>
+
+      <pre><code>SELECT Deal_Name, Account_Name.Account_Name
+FROM Deals
+LIMIT 200</code></pre>
+
+      <h3>Date filter</h3>
+
+      <pre><code>SELECT id, Deal_Name, Closing_Date
+FROM Deals
+WHERE Closing_Date &gt;= '2026-01-01'
+LIMIT 200</code></pre>
+    </section>
+
+    <section id="limits">
+      <h2>Pagination and Limits</h2>
+
+      <p>
+        COQL Editor allows up to <strong>2,000 records per API request</strong>.
+      </p>
+
+      <p>
+        The page selector can be used to navigate through additional records.
+      </p>
+
+      <div class="note">
+        The <strong>Load All</strong> option is intentionally limited to
+        <strong>20,000 records</strong> to maintain a responsive user
+        experience. COQL Editor loads the data in batches in the background.
+      </div>
+
+      <p>
+        For larger exports, users should use Zoho CRM Bulk Read or apply more
+        specific filters.
+      </p>
+    </section>
+
+    <section id="faq">
+      <h2>FAQ</h2>
+
+      <h3>Does COQL Editor store my CRM data?</h3>
+      <p>
+        COQL Editor is designed to execute queries inside the Zoho CRM
+        environment. Query results are displayed in the browser and are not
+        intended to be stored on an external application server by the
+        extension.
+      </p>
+
+      <h3>Do I need to provide an OAuth token?</h3>
+      <p>
+        No. The extension uses the Zoho CRM widget environment and the
+        permissions granted during installation.
+      </p>
+
+      <h3>Does IntelliSense consume an API call every time I type?</h3>
+      <p>
+        No. Metadata is loaded only when necessary and reused during the
+        current session whenever possible.
+      </p>
+
+      <h3>Why is Load All limited to 20,000 records?</h3>
+      <p>
+        The limit is intended to keep browser memory usage, rendering time and
+        overall performance predictable.
+      </p>
+
+      <h3>Can I export results?</h3>
+      <p>
+        Yes. Results can be exported as a UTF-8 CSV file.
+      </p>
+    </section>
+
+    <section id="support">
+      <h2>Support</h2>
+
+      <p>
+        COQL Editor is developed by <strong>Sakura Extensions</strong>.
+      </p>
+
+      <p>
+        For questions, bug reports or feature requests, contact the support
+        email listed on the COQL Editor page in Zoho Marketplace.
+      </p>
+
+      <p>
+        Current documentation version: <strong>COQL Editor v1.3.1</strong>
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Sakura Extensions · COQL Editor for Zoho CRM
+    </div>
+  </footer>
+
+</body>
+</html>
